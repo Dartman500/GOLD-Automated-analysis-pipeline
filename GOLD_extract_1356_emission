@@ -1,0 +1,30 @@
+"""
+Extract OI 135.6 nm emission from GOLD radiance spectra
+"""
+
+import numpy as np
+
+
+def extract_oxygen_1356(wavelength, radiance):
+    """
+    Integrate radiance around 135.6 nm oxygen line.
+
+    Parameters
+    ----------
+    wavelength : ndarray
+    radiance : ndarray
+
+    Returns
+    -------
+    oxygen_map : ndarray
+    """
+
+    ids = np.argwhere(
+        (134.3 <= wavelength[50, 25, :]) &
+        (wavelength[50, 25, :] <= 137.7)
+    )
+
+    oxygen = np.nansum(radiance[:, :, ids], axis=2) * 0.04
+    oxygen = np.transpose(oxygen[:, :, 0])
+
+    return oxygen
