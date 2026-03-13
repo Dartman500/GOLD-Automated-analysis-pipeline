@@ -1,0 +1,18 @@
+import requests
+from pathlib import Path
+
+def download_file(url, output):
+    r = requests.get(url)
+    with open(output, "wb") as f:
+        f.write(r.content)
+
+def main():
+    data_dir = Path("data")
+    data_dir.mkdir(exist_ok=True)
+
+    # Example placeholder dataset
+    url = "https://example.com/gold_sample.nc"
+    download_file(url, data_dir / "gold_sample.nc")
+
+if __name__ == "__main__":
+    main()
