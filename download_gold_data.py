@@ -11,8 +11,8 @@ def main():
     data_dir.mkdir(exist_ok=True)
 
     # Example placeholder dataset
-    url = "https://example.com/gold_sample.nc"
-    download_file(url, data_dir / "gold_sample.nc")
+    url = "https://gold.cs.ucf.edu/data/search/"
+    download_file(url, data_dir / "*.nc")
 
 if __name__ == "__main__":
     main()
